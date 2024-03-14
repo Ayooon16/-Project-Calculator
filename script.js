@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 maindisplay.innerHTML = 1 / maindisplay.innerHTML
                 break
             case '%':
+                if(num1!=''){
                 maindisplay.innerHTML = ((parseFloat(num1) / 100) * maindisplay.innerHTML)
+        }
                 break
         }
 
