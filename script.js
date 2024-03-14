@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const operators = document.querySelectorAll('button');
     maindisplay = document.getElementById('maindisplay')
     secondarydisplay = document.getElementById('secondarydisplay')
-    volatile=false
+    volatile = false
     function calculate(operation) {
         switch (operator) {
             case '+':
@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         break */
 
         }
-        secondarydisplay.innerHTML = maindisplay.innerHTML+operation
+        secondarydisplay.innerHTML = maindisplay.innerHTML + operation
         num1 = maindisplay.innerHTML
         num2 = null
         operator = operation
-        volatile=true
+        volatile = true
 
     }
     function calculatesingle(operation) {
@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
     operators.forEach(el => el.addEventListener('click', event => {
-        if(volatile){
-            maindisplay.innerHTML=''
-            volatile=false
+        if (volatile) {
+            maindisplay.innerHTML = ''
+            volatile = false
         }
         if (el.className == "num") {
             maindisplay.innerHTML = maindisplay.innerHTML + el.innerHTML
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 else {
                     num2 = maindisplay.innerHTML
-                    calculate(operator)
+                    calculate(el.innerHTML)
                 }
             }
         }
