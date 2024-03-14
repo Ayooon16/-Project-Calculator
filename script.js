@@ -18,19 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 maindisplay.innerHTML = parseFloat(num1) * parseFloat(num2)
                 break
             case '/':
-                maindisplay.innerHTML = parseFloat(num1) / parseFloat(num2)
+                if (num2 != 0) { maindisplay.innerHTML = parseFloat(num1) / parseFloat(num2) }
+                else {
+                    document.getElementById('calculator').remove()
+                    document.getElementById('error').innerHTML = "SO YOU'VE CHOSEN DEATH"
+                    document.body.style.backgroundColor = 'black'
+                }
+
                 break
             /*             case'%':
                         maindisplay.innerHTML = ((parseFloat(num2)/parseFloat(num1))*100)+'%'
                         break */
 
         }
+        if(operation!='='){
+            console.log(operation)
         secondarydisplay.innerHTML = maindisplay.innerHTML + operation
         num1 = maindisplay.innerHTML
         num2 = null
         operator = operation
         volatile = true
+        maindisplay.style.color = 'gray'}
+        else{
+            console.log(operation)
+            num2 = null
+            secondarydisplay.innerHTML=''
+            operator = ''
 
+        }
     }
     function calculatesingle(operation) {
         console.log(operation)
@@ -54,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (volatile) {
             maindisplay.innerHTML = ''
             volatile = false
+            maindisplay.style.color = 'black'
+
         }
         if (el.className == "num") {
             maindisplay.innerHTML = maindisplay.innerHTML + el.innerHTML
@@ -66,6 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 num2 = null
                 operator = ''
             }
+            if (el.id == "clearcurrent") {
+                maindisplay.innerHTML = ''
+            }
+            if (el.id == "backspace") {
+                maindisplay.innerHTML = maindisplay.innerHTML.slice(0, -1)
+            }
+            if (maindisplay.innerHTML != '') {
+                if (el.id == "changesign") {
+                    maindisplay.innerHTML = (parseFloat(maindisplay.innerHTML) * (-1))
+                }
+            }
+
         }
         if (el.className == 'operators') {
             if (maindisplay.innerHTML != '') {
@@ -75,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     operator = el.innerHTML
                     secondarydisplay.innerHTML = num1 + ' ' + operator
                 }
-
                 else {
                     num2 = maindisplay.innerHTML
                     calculate(el.innerHTML)
@@ -83,8 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         else if (el.className == 'singleoperators') {
-            console.log('a')
-            calculatesingle(el.innerHTML)
+            if (maindisplay.innerHTML != '') {
+                calculatesingle(el.innerHTML)
+            }
         }
-    }));
-});
+    }))
+})

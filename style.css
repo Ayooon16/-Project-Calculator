@@ -9,6 +9,10 @@ body{
     min-height: 100vh;
 
 }
+#error{
+    font-size: 100px;
+    color: red;
+}
 .calculator{
     border: 2px black solid;
     display: flex;
