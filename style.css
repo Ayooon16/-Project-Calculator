@@ -1,0 +1,45 @@
+@import 'reset.css';
+*{
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+.calculator{
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:600px;
+    height:800px;
+}
+button{
+    flex: 1 0 25%;
+    font-size: 30px;
+}
+.display{
+    border:1px red solid;
+    height:20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+#maindisplay{
+    height: 66%;
+    font-size: 50px;
+
+}
+#secondarydisplay{
+    font-size: 30px;
+}
+.buttons{
+    border:1px blue solid;
+    height:80%;
+    display: flex;
+    flex-wrap: wrap;
+}
