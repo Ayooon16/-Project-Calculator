@@ -31,18 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         break */
 
         }
-        if(operation!='='){
+        if (operation != '=') {
             console.log(operation)
-        secondarydisplay.innerHTML = maindisplay.innerHTML + operation
-        num1 = maindisplay.innerHTML
-        num2 = null
-        operator = operation
-        volatile = true
-        maindisplay.style.color = 'gray'}
-        else{
+            secondarydisplay.innerHTML = maindisplay.innerHTML + operation
+            num1 = maindisplay.innerHTML
+            num2 = null
+            operator = operation
+            volatile = true
+            maindisplay.style.color = 'gray'
+        }
+        else {
             console.log(operation)
             num2 = null
-            secondarydisplay.innerHTML=''
+            secondarydisplay.innerHTML = ''
             operator = ''
 
         }
@@ -60,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 maindisplay.innerHTML = 1 / maindisplay.innerHTML
                 break
             case '%':
-                if(num1!=''){
-                maindisplay.innerHTML = ((parseFloat(num1) / 100) * maindisplay.innerHTML)
-        }
+                if (num1 != '') {
+                    maindisplay.innerHTML = ((parseFloat(num1) / 100) * maindisplay.innerHTML)
+                }
                 break
         }
 
@@ -95,6 +96,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (el.id == "changesign") {
                     maindisplay.innerHTML = (parseFloat(maindisplay.innerHTML) * (-1))
                 }
+                else if (el.id=='equals'){
+                    console.log(operator)
+                    switch (operator) {
+                        case '+':
+                            maindisplay.innerHTML = parseFloat(num1) + parseFloat(maindisplay.innerHTML)
+                            break
+                        case '-':
+                            maindisplay.innerHTML = parseFloat(num1) - parseFloat(maindisplay.innerHTML)
+                            break
+                        case '*':
+                            maindisplay.innerHTML = parseFloat(num1) * parseFloat(maindisplay.innerHTML)
+                            break
+                        case '/':
+                            if (maindisplay.innerHTML != 0) { maindisplay.innerHTML = parseFloat(num1) / parseFloat(maindisplay.innerHTML) }
+                            else {
+                                document.getElementById('calculator').remove()
+                                document.getElementById('error').innerHTML = "SO YOU'VE CHOSEN DEATH"
+                                document.body.style.backgroundColor = 'black'
+                            }
+                            break
+                    }
+                    secondarydisplay.innerHTML = ''
+                    num1 = null
+                    operator=''
+                }
+                    else if (el.id=='dot'){
+                        if(maindisplay.innerHTML.indexOf('.')==-1){
+                            maindisplay.innerHTML=maindisplay.innerHTML+'.'
+                        }
+                    }
             }
 
         }
